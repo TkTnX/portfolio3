@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:200,300,regular,500,600,700);
+@import "tailwindcss";
+
+@theme {
+  --color-main: #0e0e0e;
+  --color-bg: #141313;
+  --color-text: #fff;
+  --color-primary: #eae112;
+
+  --font-family: "Oswald", sans-serif;
+}
+
+body {
+  @apply bg-bg text-text min-h-screen md:h-screen font-family;
+}
+
+#root {
+  @apply h-screen md:h-full;
+}
