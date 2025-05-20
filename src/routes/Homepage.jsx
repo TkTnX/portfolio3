@@ -1,6 +1,6 @@
 export const Homepage = () => {
   return (
-    <section className="h-full flex-1 relative overflow-hidden bg-linear-to-r from-main to-transparent">
+    <section className=" flex-1 relative overflow-hidden bg-linear-to-r from-main to-transparent h-full md:h-screen">
       <img
         src="/images/mainBg.jpg"
         alt="Bg image"

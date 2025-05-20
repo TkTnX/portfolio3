@@ -10,8 +10,14 @@
   --font-family: "Oswald", sans-serif;
 }
 
+html,
+body,
+#root {
+  @apply h-full;
+}
+
 body {
-  @apply bg-bg text-text min-h-screen md:h-screen font-family;
+  @apply bg-bg text-text  font-family;
 }
 
 #root {
