@@ -1,12 +1,20 @@
-import { Link } from "react-router";
+import { Trash } from "lucide-react";
+import { Link, useLocation } from "react-router";
 
 export const PortfolioItem = ({ project }) => {
+  const location = useLocation();
+
   return (
-    //   TODO: В будущем тут project.id
-    <Link
-      to={`/portfolio/${project.title}`}
-      className="relative group block w-full h-full"
-    >
+    <div className="group relative">
+      {location.pathname.includes("admin") && (
+        <button className="bg-bg rounded-full p-2 absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition">
+          <Trash />
+        </button>
+      )}
+      <Link
+        to={`/portfolio/${project.id}`}
+        className="  block w-full h-full absolute inset-0 z-10"
+      />
       <img
         src={project.img}
         alt={project.title}
@@ -16,6 +24,6 @@ export const PortfolioItem = ({ project }) => {
         <h5 className="text-2xl">{project.title}</h5>
         <p className="text-sm">{project.description.slice(0, 100)}...</p>
       </div>
-    </Link>
+    </div>
   );
 };
