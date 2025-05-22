@@ -1,15 +1,12 @@
-import { Trash } from "lucide-react";
 import { Link, useLocation } from "react-router";
-
+import { PortfolioListItemDeleteButton } from "./PortfolioListItemDeleteButton";
 export const PortfolioItem = ({ project }) => {
   const location = useLocation();
 
   return (
     <div className="group relative">
       {location.pathname.includes("admin") && (
-        <button className="bg-bg rounded-full p-2 absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition">
-          <Trash />
-        </button>
+        <PortfolioListItemDeleteButton projectId={project.id} />
       )}
       <Link
         to={`/portfolio/${project.id}`}

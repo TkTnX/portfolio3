@@ -4,7 +4,8 @@ import { Skeleton } from "../ui/Skeleton";
 
 export const PortfolioList = ({ className }) => {
   const { projects, error, loading } = useProjects();
-  if (error) return <h2>{error}</h2>;
+
+  if (error) return <h2 className="text-red-500 text-lg">{error}</h2>;
 
   return (
     <div

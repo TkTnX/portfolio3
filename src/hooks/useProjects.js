@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { axiosInstance, URL } from "../configs";
 import { AxiosError } from "axios";
+import projectsService from "../services/projects.service";
+import { useProjectsStore } from "../stores/projectsStore";
 
 export const useProjects = () => {
-  const [projects, setProjects] = useState([]);
+  const { projects, setProjects } = useProjectsStore();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,7 +13,7 @@ export const useProjects = () => {
     try {
       setError(false);
       const fetchProjects = async () => {
-        const { data } = await axiosInstance.get(URL.projects.index);
+        const data = await projectsService.getProjects();
         setProjects(data);
         return data;
       };
@@ -27,9 +28,16 @@ export const useProjects = () => {
     }
   }, []);
 
+  async function getProjects() {
+    const data = await projectsService.getProjects();
+    setProjects(data);
+    return data;
+  }
+
   return {
     projects,
     error,
     loading,
+    getProjects,
   };
 };

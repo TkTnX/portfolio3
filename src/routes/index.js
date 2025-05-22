@@ -5,3 +5,4 @@ export * from "./Reviews";
 export * from "./Contacts";
 export * from "./Admin/Admin";
 export * from "./Admin/Projects";
+export * from "./Admin/Technologies";

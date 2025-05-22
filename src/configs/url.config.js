@@ -1,5 +1,8 @@
 export const URL = {
-    projects: {
-        index: "/projects",
-    }
-}
+  projects: {
+    index: "/projects",
+  },
+  tecnologies: {
+    index: "/technologies",
+  },
+};

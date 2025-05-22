@@ -11,7 +11,9 @@ import {
   Portfolio,
   Admin,
   ProjectsPage,
+  TechnologiesPage,
 } from "./routes";
+import { ToastContainer } from "react-toastify";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
@@ -26,8 +28,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Admin />} />
           <Route path="projects" element={<ProjectsPage />} />
+          <Route path="technologies" element={<TechnologiesPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
+    <ToastContainer />
   </StrictMode>
 );

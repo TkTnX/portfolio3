@@ -1,51 +1,63 @@
 import { useState } from "react";
-import { axiosInstance, URL } from "../../configs";
 import { Input } from "../ui/Input";
+import projectsService from "../../services/projects.service";
+import { Upload } from "../ui/Upload";
+import { useProjects } from "../../hooks/useProjects";
+import { toast } from "react-toastify";
 
 export const AddProject = () => {
   const [image, setImage] = useState(null);
+  const { getProjects } = useProjects();
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
 
       const formData = new FormData(e.target);
-
+      const { title, description, technologies, github } =
+        Object.fromEntries(formData);
+      if (!title || !description || !technologies)
+        return toast.error("Заполните все поля");
+      if (!image) return toast.error("Загрузите изображение");
       const body = {
-        title: formData.get("title"),
-        description: formData.get("description"),
-        technologies: formData.get("technologies"),
-        github: formData.get("github"),
-        image,
+        title,
+        description,
+        technologies,
+        github,
+        img: image.cdnUrl,
       };
 
-      // TODO: Запросы перенсти в services
-      const res = await axiosInstance.post(URL.projects.index, body);
-      console.log(res);
-
-      console.log(body);
+      const res = await projectsService.addProject(body);
+      await getProjects();
+      toast.success("Проект успешно добавлен");
+      return res;
     } catch (error) {
       console.log(error);
+      toast.error("Произошла ошибка");
     }
   };
 
   return (
     <div className="bg-main p-4 rounded-xl mt-10 w-full md:max-w-[500px] flex-1">
       <h3 className="text-xl">Добавление проекта</h3>
+      <Upload setImage={setImage} />
       <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-4">
         {/* TODO: Добавление изображения */}
         <Input
+          required
           label={"Название проекта"}
           name={"title"}
           placeholder={"Введите название проекта"}
           type={"text"}
         />
         <Input
+          required
           label={"Описание проекта"}
           name={"description"}
           placeholder={"Введите описание проекта"}
           type={"text"}
         />
         <Input
+          required
           label={"Список технологий"}
           name={"technologies"}
           placeholder={"Введите технологии через запятую"}
