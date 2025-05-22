@@ -12,6 +12,7 @@ import {
   Admin,
   ProjectsPage,
   TechnologiesPage,
+  ReviewsPage,
 } from "./routes";
 import { ToastContainer } from "react-toastify";
 createRoot(document.getElementById("root")).render(
@@ -29,6 +30,7 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<Admin />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="technologies" element={<TechnologiesPage />} />
+          <Route path="reviews" element={<ReviewsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

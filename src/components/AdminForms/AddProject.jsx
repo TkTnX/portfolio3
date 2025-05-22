@@ -4,16 +4,18 @@ import projectsService from "../../services/projects.service";
 import { Upload } from "../ui/Upload";
 import { useProjects } from "../../hooks/useProjects";
 import { toast } from "react-toastify";
+import { Textarea } from "../ui/Textarea";
 
 export const AddProject = () => {
   const [image, setImage] = useState(null);
+  const [description, setDescription] = useState("");
   const { getProjects } = useProjects();
   const onSubmit = async (e) => {
     try {
       e.preventDefault();
 
       const formData = new FormData(e.target);
-      const { title, description, technologies, github } =
+      const { title, technologies, github } =
         Object.fromEntries(formData);
       if (!title || !description || !technologies)
         return toast.error("Заполните все поля");
@@ -41,7 +43,6 @@ export const AddProject = () => {
       <h3 className="text-xl">Добавление проекта</h3>
       <Upload setImage={setImage} />
       <form onSubmit={onSubmit} className="mt-10 flex flex-col gap-4">
-        {/* TODO: Добавление изображения */}
         <Input
           required
           label={"Название проекта"}
@@ -49,12 +50,10 @@ export const AddProject = () => {
           placeholder={"Введите название проекта"}
           type={"text"}
         />
-        <Input
-          required
+        <Textarea
+          value={description}
+          setValue={setDescription}
           label={"Описание проекта"}
-          name={"description"}
-          placeholder={"Введите описание проекта"}
-          type={"text"}
         />
         <Input
           required

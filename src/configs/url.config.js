@@ -5,4 +5,7 @@ export const URL = {
   tecnologies: {
     index: "/technologies",
   },
+  reviews: {
+    index: "/reviews"
+  }
 };

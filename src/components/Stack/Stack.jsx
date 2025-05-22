@@ -1,8 +1,11 @@
+import { useLocation } from "react-router";
 import { useTechnologies } from "../../hooks/useTechnologies";
 import { STACK_CONFIG } from "./stack.config";
+import { DeleteTechnologyButton } from "./DeleteTechnologyButton";
 
 export const Stack = ({className, listClassName}) => {
   const { technologies, error, loading } = useTechnologies();
+  const location = useLocation()
   if (error) return <h2 className="text-red-500">{error}</h2>;
   return (
     <div className={`w-full mt-16 ${className}`}>
@@ -12,7 +15,8 @@ export const Stack = ({className, listClassName}) => {
       >
         {(loading && !technologies.length ? STACK_CONFIG : technologies).map(
           (technology) => (
-            <div className="justify-self-center" key={technology.id}>
+            <div className="justify-self-center relative" key={technology.id}>
+              {location.pathname.includes("/admin") && <DeleteTechnologyButton id={technology.id} />}
               <img
                 className=" w-full max-w-[70px] h-full  max-h-[70px]"
                 src={technology.icon}

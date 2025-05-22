@@ -1,4 +1,3 @@
-// TODO: В будущем перенести в бд и изменять в админке
 export const STACK_CONFIG = [
   {
     name: "HTML",
