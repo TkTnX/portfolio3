@@ -7,6 +7,12 @@ class ProjectsService {
     );
     return data;
   }
+  async getProject(projectId) {
+    const { data } = await axiosInstance.get(
+      `${URL.projects.index}/${projectId}`
+    );
+    return data;
+  }
 
   async addProject(body) {
     const { data } = await axiosInstance.post(URL.projects.index, body);

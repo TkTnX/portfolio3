@@ -28,6 +28,23 @@ export const useProjects = () => {
     }
   }, []);
 
+  async function getProject(id) {
+    setLoading(true);
+    try {
+      setError(false);
+
+      const data = await projectsService.getProject(id);
+      return data;
+    } catch (error) {
+      console.log(error);
+      if (error instanceof AxiosError) {
+        setError(error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function getProjects() {
     const data = await projectsService.getProjects();
     setProjects(data);
@@ -39,5 +56,6 @@ export const useProjects = () => {
     error,
     loading,
     getProjects,
+    getProject,
   };
 };

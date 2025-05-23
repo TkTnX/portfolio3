@@ -13,6 +13,7 @@ import {
   ProjectsPage,
   TechnologiesPage,
   ReviewsPage,
+  ProjectPage,
 } from "./routes";
 import { ToastContainer } from "react-toastify";
 createRoot(document.getElementById("root")).render(
@@ -23,6 +24,7 @@ createRoot(document.getElementById("root")).render(
           <Route index element={<Homepage />} />
           <Route path="about" element={<About />} />
           <Route path="portfolio" element={<Portfolio />} />
+          <Route path="portfolio/:id" element={<ProjectPage />} />
           <Route path="reviews" element={<Reviews />} />
           <Route path="contact" element={<Contacts />} />
         </Route>

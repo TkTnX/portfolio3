@@ -3,7 +3,8 @@ export * from "./About";
 export * from "./Portfolio";
 export * from "./Reviews";
 export * from "./Contacts";
-export * from "./Admin/Admin";
-export * from "./Admin/Projects";
-export * from "./Admin/Technologies";
-export * from "./Admin/Reviews";
+export * from "./admin/Admin";
+export * from "./admin/Projects";
+export * from "./admin/Technologies";
+export * from "./admin/Reviews";
+export * from "./Project"
